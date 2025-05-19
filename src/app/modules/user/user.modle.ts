@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { IUser } from './user.interface';
 
 const userSchema = new Schema<IUser>({
@@ -8,6 +8,20 @@ const userSchema = new Schema<IUser>({
   },
   profilImage: {
     type: String,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin', 'phermasists'],
+    default: 'user',
   },
 });
 

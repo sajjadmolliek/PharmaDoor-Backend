@@ -1,7 +1,8 @@
-import User from './user.modle';
+import { IUser } from './user.interface';
+import UserModle from './user.modle';
 
-const createUser = async () => {
-  const result = await User.create();
+const createUser = async (payload: IUser) => {
+  const result = await UserModle.create(payload);
   return result;
 };
 
