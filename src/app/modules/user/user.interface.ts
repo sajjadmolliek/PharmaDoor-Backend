@@ -3,5 +3,5 @@ export interface IUser {
   profilImage: string;
   email: string;
   password: string;
-  role: 'user' | 'admin' | 'phermasists';
+  role: 'user' | 'admin' | 'pharmacist';
 }

@@ -1,8 +1,9 @@
-// user.route.ts
 import express from 'express';
 import { UserController } from './user.controller';
 import validateRequest from '../../middlewares/validateRequest';
 import { userZodValidationScema } from './user.validation';
+import { adminZodValidationSchema } from '../admin/admin.validation';
+import { phermasistZodValidationSchema } from '../phermasist/phermasist.validation';
 
 const router = express.Router();
 
@@ -11,11 +12,19 @@ router.post(
   validateRequest(userZodValidationScema.createUserZodSchema),
   UserController.createUsers,
 );
-router.get(
-  '/',
-  //   validateRequest(userZodValidationScema.createUserZodSchema),
-  UserController.getAllUser,
+router.post(
+  '/create-admin',
+  validateRequest(adminZodValidationSchema.createAdminValidationSchema),
+  UserController.createAdmin,
 );
+router.post(
+  '/create-phermasist',
+  validateRequest(
+    phermasistZodValidationSchema.createPhermasistValidationSchema,
+  ),
+  UserController.createPhermasist,
+);
+router.get('/', UserController.getAllUser);
 router.get('/:id', UserController.getSingleUser);
 router.patch(
   '/:id',

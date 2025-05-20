@@ -59,10 +59,38 @@ const updatedUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const createAdmin = catchAsync(async (req, res) => {
+  const { password, admin: adminData } = req.body;
+  const result = await UserServices.createAdminIntoDB(password, adminData);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Admin Created is successfully',
+    data: result,
+  });
+});
+const createPhermasist = catchAsync(async (req, res) => {
+  console.log('Request body:', req.body);
+  const { password, pharmacist: phermasistData } = req.body;
+  const result = await UserServices.createPhermasistIntoDB(
+    password,
+    phermasistData,
+  );
+  console.log(result);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Phermasist Created is successfully',
+    data: result,
+  });
+});
 export const UserController = {
   createUsers,
   getAllUser,
   getSingleUser,
   deletedUser,
   updatedUser,
+  createAdmin,
+  createPhermasist,
 };
