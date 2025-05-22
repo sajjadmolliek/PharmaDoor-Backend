@@ -15,5 +15,10 @@ router.post(
   validateRequest(loginZodValidationSchema.refreshTokenValidationSchema),
   authController.refreshToken,
 );
+router.post(
+  '/logout',
+
+  authController.logout,
+);
 
 export const LoginRouetr = router;

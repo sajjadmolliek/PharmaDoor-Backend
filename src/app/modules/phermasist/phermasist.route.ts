@@ -1,7 +1,7 @@
 import express from 'express';
 import { PhermasistController } from './phermasist.controller';
 import validateRequest from '../../middlewares/validateRequest';
-import { phermasistZodValidationSchema } from './phermasist.validation';
+import { pharmacistZodValidationSchema } from './phermasist.validation';
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/:id', PhermasistController.getSinglePhermasist);
 router.patch(
   '/:id',
   validateRequest(
-    phermasistZodValidationSchema.updatePhermasistValidationSchema,
+    pharmacistZodValidationSchema.updatePharmacistValidationSchema,
   ),
   PhermasistController.updatePhermasist,
 );

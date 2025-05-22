@@ -19,6 +19,7 @@ const authValidateRequest = (...requiredRoles: TUserRole[]) => {
       token,
       config.jwt_access_secret as string,
     ) as JwtPayload;
+    console.log('amar', decoded);
     //access routing baced autorization function mean using ka ka route use korta parbe
     const { role, email } = decoded;
     if (!email || !role) {
@@ -26,7 +27,7 @@ const authValidateRequest = (...requiredRoles: TUserRole[]) => {
     }
 
     const user = await validUserForLogin(email);
-
+    console.log(user);
     //password change time valid tokon comparizon
     // if (
     //   user.passwordChangedAt &&

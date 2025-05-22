@@ -5,9 +5,11 @@ const createUserZodSchema = z.object({
     name: z.string({
       required_error: 'Name is required',
     }),
-    profilImage: z.string({
-      required_error: 'Profile image is required',
-    }),
+    profilImage: z
+      .string({
+        required_error: 'Profile image is required',
+      })
+      .optional(),
     email: z
       .string({
         required_error: 'Email is required',
@@ -17,11 +19,13 @@ const createUserZodSchema = z.object({
       .string({
         required_error: 'Password is required',
       })
-      .min(6, 'Password must be at least 6 characters'),
-    role: z.enum(['user', 'admin', 'phermasists'], {
-      required_error:
-        'Role is required and must be one of user | admin | phermasists',
-    }),
+      .min(8, 'Password must be at least 8 characters'),
+    role: z
+      .enum(['user', 'admin', 'phermasists'], {
+        required_error:
+          'Role is required and must be one of user | admin | phermasists',
+      })
+      .optional(),
   }),
 });
 

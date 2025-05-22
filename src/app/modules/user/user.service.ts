@@ -86,6 +86,7 @@ const createPhermasistIntoDB = async (
     role: 'pharmacist',
     email: payload.email,
     name: payload.name,
+    status: payload.status,
   };
   console.log(userData);
   userData.password = password;

@@ -38,7 +38,18 @@ const refreshToken = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+const logout = catchAsync(async (req, res) => {
+  const result = await authService.logoutUser(res);
+  sendResponse(res, {
+    statusCode: httpSattus.OK,
+    success: true,
+    message: result.message,
+    data: null,
+  });
+});
 export const authController = {
   loginUser,
   refreshToken,
+  logout,
 };

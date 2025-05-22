@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import config from '../../config';
 import AppError from '../../error/app.error';
 import { TLogin } from './auth.interface';
@@ -26,6 +27,7 @@ const LoginUser = async (payload: TLogin) => {
     email: user?.email,
     role: user?.role,
     profilImage: user.profilImage,
+    status: user.status || 'pending',
   };
 
   const accessToken = createToken(
@@ -67,8 +69,9 @@ const refreshToken = async (token: string) => {
     email: user?.email,
     role: user?.role,
     profilImage: user.profilImage,
+    status: user.status || 'pending',
   };
-  console.log('JWT Payload for Refresh Token:', jwtPayload);
+  // console.log('JWT Payload for Refresh Token:', jwtPayload);
 
   const accessToken = createToken(
     jwtPayload,
@@ -80,7 +83,21 @@ const refreshToken = async (token: string) => {
   };
 };
 
+//log out functionality
+const logoutUser = async (res: any) => {
+  res.clearCookie('refreshToken', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // true in production (HTTPS)
+    sameSite: 'strict',
+  });
+
+  return {
+    message: 'Successfully logged out',
+  };
+};
+
 export const authService = {
   LoginUser,
   refreshToken,
+  logoutUser,
 };

@@ -5,7 +5,7 @@ import httpStatus from 'http-status';
 import bcrypt from 'bcryptjs';
 import User from '../user/user.modle';
 export const validUserForLogin = async (email: string) => {
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ email }).select('+status +password');
 
   if (!user) {
     throw new AppError(httpStatus.BAD_REQUEST, 'user in not found');

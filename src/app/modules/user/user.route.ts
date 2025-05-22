@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import validateRequest from '../../middlewares/validateRequest';
 import { userZodValidationScema } from './user.validation';
 import { adminZodValidationSchema } from '../admin/admin.validation';
-import { phermasistZodValidationSchema } from '../phermasist/phermasist.validation';
+import { pharmacistZodValidationSchema } from '../phermasist/phermasist.validation';
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.post(
 router.post(
   '/create-phermasist',
   validateRequest(
-    phermasistZodValidationSchema.createPhermasistValidationSchema,
+    pharmacistZodValidationSchema.createPharmacistValidationSchema,
   ),
   UserController.createPhermasist,
 );

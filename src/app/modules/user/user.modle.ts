@@ -24,6 +24,11 @@ const userSchema = new Schema<IUser>({
     enum: ['user', 'admin', 'pharmacist'],
     default: 'user',
   },
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending',
+  },
 });
 userSchema.pre('save', async function (next) {
   //   console.log(this, 'pre hook : we will save data');
