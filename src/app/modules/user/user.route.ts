@@ -4,6 +4,8 @@ import validateRequest from '../../middlewares/validateRequest';
 import { userZodValidationScema } from './user.validation';
 import { adminZodValidationSchema } from '../admin/admin.validation';
 import { pharmacistZodValidationSchema } from '../phermasist/phermasist.validation';
+import authValidateRequest from '../../middlewares/auth.validationRequest';
+import { USER_ROLE } from './user.constant';
 
 const router = express.Router();
 
@@ -24,10 +26,17 @@ router.post(
   ),
   UserController.createPhermasist,
 );
-router.get('/', UserController.getAllUser);
+router.get(
+  '/',
+  authValidateRequest(USER_ROLE.admin),
+
+  UserController.getAllUser,
+);
 router.get('/:id', UserController.getSingleUser);
 router.patch(
   '/:id',
+  authValidateRequest(USER_ROLE.admin, USER_ROLE.pharmacist),
+
   validateRequest(userZodValidationScema.updatedUserZodSchema),
   UserController.updatedUser,
 );

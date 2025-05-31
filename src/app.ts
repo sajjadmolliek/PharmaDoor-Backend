@@ -4,6 +4,7 @@ import router from './app/router';
 import cookieParser from 'cookie-parser';
 import globalErrorHandler from './app/middlewares/globalErrorHandeller';
 import notFound from './app/middlewares/not-found';
+import { checkExpiredMedicines } from './app/modules/Allmedicine/expire.medicinecheck';
 const app: Application = express();
 app.use(express.json());
 app.use(
@@ -27,5 +28,6 @@ app.use(globalErrorHandler);
 
 //not error handeller
 app.use(notFound);
-
+//check expire medicine
+checkExpiredMedicines();
 export default app;

@@ -4,6 +4,8 @@ import { AdminRoute } from '../modules/admin/admin.route';
 import { PhermasistRoute } from '../modules/phermasist/phermasist.route';
 import { LoginRouetr } from '../modules/auth/auth.route';
 import { ProductRouter } from '../modules/student/student.route';
+import { notificationRouter } from '../modules/notification/notification.route';
+import { MedicineRoute } from '../modules/Allmedicine/medicine.route';
 
 const router = Router();
 
@@ -17,7 +19,7 @@ const modulesRouter = [
     route: AdminRoute,
   },
   {
-    path: '/phermasist',
+    path: '/phermacist',
     route: PhermasistRoute,
   },
   {
@@ -27,6 +29,14 @@ const modulesRouter = [
   {
     path: '/product',
     route: ProductRouter,
+  },
+  {
+    path: '/notification',
+    route: notificationRouter,
+  },
+  {
+    path: '/medicine',
+    route: MedicineRoute,
   },
 ];
 

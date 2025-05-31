@@ -8,7 +8,8 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: true,
   },
-  profilImage: {
+
+  profileImage: {
     type: String,
   },
   email: {

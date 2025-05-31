@@ -24,9 +24,11 @@ const LoginUser = async (payload: TLogin) => {
   }
 
   const jwtPayload = {
+    _id: user._id,
+    name: user.name,
     email: user?.email,
     role: user?.role,
-    profilImage: user.profilImage,
+    profileImage: user.profileImage,
     status: user.status || 'pending',
   };
 
@@ -66,12 +68,15 @@ const refreshToken = async (token: string) => {
   const user = await validUserForLogin(email);
 
   const jwtPayload = {
-    email: user?.email,
-    role: user?.role,
-    profilImage: user.profilImage,
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    profileImage: user.profileImage,
     status: user.status || 'pending',
   };
-  // console.log('JWT Payload for Refresh Token:', jwtPayload);
+
+  console.log('JWT Payload for Refresh Token:', jwtPayload);
 
   const accessToken = createToken(
     jwtPayload,

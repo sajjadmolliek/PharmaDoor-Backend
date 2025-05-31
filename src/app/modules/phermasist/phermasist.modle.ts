@@ -12,13 +12,14 @@ const phermasistsSchema = new Schema<TPhermasists>(
     postCode: { type: String, required: true },
     nid: { type: String, required: true },
     nidImage: { type: String, required: true },
+    profileImage: { type: String },
     drugLicenseImage: { type: String, required: true },
     tradeLicenseImage: { type: String, required: true },
-    status: {
-      type: String,
-      enum: ['pending', 'approved', 'rejected'],
-      default: 'pending',
-    },
+    // status: {
+    //   type: String,
+    //   enum: ['pending', 'approved', 'rejected'],
+    //   default: 'pending',
+    // },
   },
   {
     timestamps: true,

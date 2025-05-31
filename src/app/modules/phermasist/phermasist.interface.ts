@@ -14,6 +14,7 @@ export type TPhermasists = {
   email: string;
   postCode: string;
   nid: string;
+  profileImage: string;
   nidImage: string;
   drugLicenseImage: string;
   tradeLicenseImage: string;

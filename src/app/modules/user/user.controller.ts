@@ -48,8 +48,9 @@ const deletedUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const updatedUser = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await UserServices.updatedUser(id, req.body);
+  const _id = req.params.id;
+  const payload = req.body;
+  const result = await UserServices.updatedUser(_id, payload);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

@@ -32,8 +32,8 @@ const deletedUser = async (userId: string) => {
 
 //user updated
 
-const updatedUser = async (userId: string, payload: Partial<IUser>) => {
-  const result = await UserModle.findByIdAndUpdate(userId, payload, {
+const updatedUser = async (_id: string, payload: Partial<IUser>) => {
+  const result = await UserModle.findByIdAndUpdate(_id, payload, {
     new: true,
     runValidators: true,
   });
@@ -85,6 +85,7 @@ const createPhermasistIntoDB = async (
   const userData: Partial<IUser> = {
     role: 'pharmacist',
     email: payload.email,
+    profileImage: payload?.profileImage,
     name: payload.name,
     status: payload.status,
   };

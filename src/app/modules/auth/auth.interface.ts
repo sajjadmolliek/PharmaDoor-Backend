@@ -1,6 +1,7 @@
 export type TLogin = {
+  name: string;
   email: string;
   password: string;
-  profilImage: string;
+  profileImage: string;
   status?: 'pending' | 'approved' | 'rejected';
 };
